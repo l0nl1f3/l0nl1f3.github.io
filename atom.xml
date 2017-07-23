@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-23T08:42:22.870Z</updated>
+  <updated>2017-07-23T09:34:57.479Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写作测试</title>
+    <link href="http://yoursite.com/2017/07/23/%E5%86%99%E4%BD%9C%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2017/07/23/写作测试/</id>
+    <published>2017-07-23T09:31:40.000Z</published>
+    <updated>2017-07-23T09:34:57.479Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>居然是markdown</p>
+<p>$$\begin{aligned}<br>f(n) &amp;= \sum<em>{d|n} g(d)\<br>g(n) &amp;= \sum</em>{d|n} \mu(d) f(\frac{n}{d})<br>\end{aligned}$$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a
+    
+    </summary>
+    
+    
+      <category term="测试，杂文" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%9D%82%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
