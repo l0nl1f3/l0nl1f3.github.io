@@ -82,8 +82,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
 
@@ -97,18 +95,18 @@
 
 
 
-<meta name="description" content="这周的Week of Code可能是最难的了。。 跳过Easy题 Maximum GCD and Sum枚举答案， 调和级数123456789101112131415161718const int MaxN = 1001234;int n, a[MaxN], b[MaxN], as[MaxN], bs[MaxN];int main() &amp;#123;	int i;	n = inp();	for(i">
+<meta name="description" content="这周的Week of Code可能是最难的了。。">
 <meta name="keywords" content="Hackerrank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HackerrankWeekOfCode 34 Diary">
 <meta property="og:url" content="http://yoursite.com/2017/07/23/HackerrankWeekOfCode34Diary/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这周的Week of Code可能是最难的了。。 跳过Easy题 Maximum GCD and Sum枚举答案， 调和级数123456789101112131415161718const int MaxN = 1001234;int n, a[MaxN], b[MaxN], as[MaxN], bs[MaxN];int main() &amp;#123;	int i;	n = inp();	for(i">
+<meta property="og:description" content="这周的Week of Code可能是最难的了。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T11:25:33.718Z">
+<meta property="og:updated_time" content="2017-07-23T14:05:51.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HackerrankWeekOfCode 34 Diary">
-<meta name="twitter:description" content="这周的Week of Code可能是最难的了。。 跳过Easy题 Maximum GCD and Sum枚举答案， 调和级数123456789101112131415161718const int MaxN = 1001234;int n, a[MaxN], b[MaxN], as[MaxN], bs[MaxN];int main() &amp;#123;	int i;	n = inp();	for(i">
+<meta name="twitter:description" content="这周的Week of Code可能是最难的了。。">
 
 
 
@@ -326,6 +324,7 @@
 
       
         <p>这周的Week of Code可能是最难的了。。</p>
+<a id="more"></a>
 <p>跳过Easy题</p>
 <h3 id="Maximum-GCD-and-Sum"><a href="#Maximum-GCD-and-Sum" class="headerlink" title="Maximum GCD and Sum"></a>Maximum GCD and Sum</h3><p>枚举答案， 调和级数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">1001234</span>;</div><div class="line"><span class="keyword">int</span> n, a[MaxN], b[MaxN], as[MaxN], bs[MaxN];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	n = inp();</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++) as[a[i] = inp()] = i;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++) bs[b[i] = inp()] = i;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> d = MaxN - <span class="number">1</span>; d; d--)&#123;</div><div class="line">		<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, L = MaxN / d * d;</div><div class="line">		<span class="keyword">for</span>(x = L; x &gt; <span class="number">0</span> &amp;&amp; !as[x]; x -= d);</div><div class="line">		<span class="keyword">for</span>(y = L; y &gt; <span class="number">0</span> &amp;&amp; !bs[y]; y -= d);</div><div class="line">		<span class="keyword">if</span>(x &amp;&amp; y)&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; x + y &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="Same-Occurence"><a href="#Same-Occurence" class="headerlink" title="Same Occurence"></a>Same Occurence</h3><p>考虑对一组询问 $(x, y)$,我们设 $p_i, q_i$， 分别表示前缀 $x、y$ 出现次数</p>
