@@ -82,8 +82,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="ChouTi's Blog" type="application/atom+xml" />
 
@@ -105,7 +103,7 @@
 <meta property="og:site_name" content="ChouTi&#39;s Blog">
 <meta property="og:description" content="这周的Week of Code可能是最难的了。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T14:05:51.852Z">
+<meta property="og:updated_time" content="2017-07-24T03:37:05.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HackerrankWeekOfCode 34 Diary">
 <meta name="twitter:description" content="这周的Week of Code可能是最难的了。。">
@@ -344,7 +342,7 @@
 <p>考虑到如果有两个数在每张卡片上都在同一侧，那么他们一定同时选或不选</p>
 <p>对于一个长度为 $L$ 的区间询问， 记录下 $m$ 个数每次所在侧的 $0/1$ 串</p>
 <p>枚举每个 $0/1$串， 把对应的数从 $\sum_{i=1}^m i^2$ 中减去，取最大值，单次复杂度是 $O(Lm)$</p>
-<p>观察到这个过程会发现，如果 $2^L &gt; 2^m$, 答案一定是 $\sum_{i=1}^m i^2$</p>
+<p>观察到这个过程会发现，如果 $2^L &gt; m$, 答案一定是 $\sum_{i=1}^m i^2$</p>
 <p>那么我们只要求出所有长度 $\leq \log_2m$的区间的答案即可</p>
 <p>最后复杂度就是 $O(nLm + Q)$, 即 $O(nm\log_2m + Q)$</p>
 <p>写的比前两题还短</p>
@@ -405,6 +403,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/24/AtCoder-Grand-Contest-018-Solution/" rel="prev" title="AtCoder Grand Contest 018 Solution">
+                AtCoder Grand Contest 018 Solution <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -477,7 +479,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
