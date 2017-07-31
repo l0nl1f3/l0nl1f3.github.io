@@ -97,17 +97,17 @@
 
 
 
-<meta name="description" content="题意一个 $n$ 位数是 Handsome 的，当且仅当其中只有 $0/1/2$，而且相邻的两个数构成的数对不在危险集合中。 $n$ 位数 $A$ 在排列 $P$ 的意义下字典序小于 $B$，则存在一个$ k(1 \leq k &amp;lt; n) $ 使得： A_{P_1} = B_{P_1}, A_{P_2} = B_{P_2} \ldots A_{P_k} = B_{P_k}, A_{P_{k+">
+<meta name="description" content="···">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ 3019 [Balkan OI 2012] Handsome Solution">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/BZOJ-3019-Balkan-OI-2012-Handsome-Solution/index.html">
 <meta property="og:site_name" content="ChouTi&#39;s Blog">
-<meta property="og:description" content="题意一个 $n$ 位数是 Handsome 的，当且仅当其中只有 $0/1/2$，而且相邻的两个数构成的数对不在危险集合中。 $n$ 位数 $A$ 在排列 $P$ 的意义下字典序小于 $B$，则存在一个$ k(1 \leq k &amp;lt; n) $ 使得： A_{P_1} = B_{P_1}, A_{P_2} = B_{P_2} \ldots A_{P_k} = B_{P_k}, A_{P_{k+">
+<meta property="og:description" content="···">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-31T09:00:51.393Z">
+<meta property="og:updated_time" content="2017-07-31T09:02:08.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ 3019 [Balkan OI 2012] Handsome Solution">
-<meta name="twitter:description" content="题意一个 $n$ 位数是 Handsome 的，当且仅当其中只有 $0/1/2$，而且相邻的两个数构成的数对不在危险集合中。 $n$ 位数 $A$ 在排列 $P$ 的意义下字典序小于 $B$，则存在一个$ k(1 \leq k &amp;lt; n) $ 使得： A_{P_1} = B_{P_1}, A_{P_2} = B_{P_2} \ldots A_{P_k} = B_{P_k}, A_{P_{k+">
+<meta name="twitter:description" content="···">
 
 
 
@@ -324,11 +324,11 @@
       
 
       
-        <a id="more"></a>
+        <p>···<br><a id="more"></a></p>
 <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>一个 $n$ 位数是 Handsome 的，当且仅当其中只有 $0/1/2$，而且相邻的两个数构成的数对不在危险集合中。</p>
 <p>$n$ 位数 $A$ 在排列 $P$ 的意义下字典序小于 $B$，则存在一个$ k(1 \leq k &lt; n) $ 使得：</p>
 <script type="math/tex; mode=display">A_{P_1} = B_{P_1}, A_{P_2} = B_{P_2} \ldots A_{P_k} = B_{P_k}, A_{P_{k+1}} < B_{P_{k+1}}</script><p>给定 $n$，危险集合，排列 $P$，以及一个 Handsome 数 $T$，统计在排列 $P$ 意义下小于 $T$ 的 Handsome 数的个数。答案模 $10^9 + 7$。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>首先dp出 $f_{i, l, r}$ 表示长度为 $i$ 的handsome数, 开通为 $l$, 结尾为 $r$, 的方案数, 即 $f_{i, l, r} = \sum_{!danger(a, r)} f(i - 1, l , b)$</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>首先dp出 $f_{i, l, r}$ 表示长度为 $i$ 的handsome数, 开头为 $l$, 结尾为 $r$, 的方案数, 即 $f_{i, l, r} = \sum_{!danger(a, r)} f(i - 1, l , b)$</p>
 <p>考虑枚举lcp的长度，那么只需要支持填上一位，撤销一位，查询总方案数即可</p>
 <p>那么我们采用线段树，$L_i, R_i$ 表示区间内确定的最左最右点，$\mathrm{way}_i$</p>
 <p>那么合并信息的时候先将左右孩子的信息相乘，即 $\mathrm{way}_p = \mathrm{way}_{\mathrm{lc}_p}\times \mathrm{way}_{\mathrm{rc}_p}$</p>
