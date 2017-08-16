@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ChouTi's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="···">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 3019 [Balkan OI 2012] Handsome Solution">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/BZOJ-3019-Balkan-OI-2012-Handsome-Solution/index.html">
+<meta property="og:site_name" content="ChouTi&#39;s Blog">
+<meta property="og:description" content="···">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-31T09:02:08.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ 3019 [Balkan OI 2012] Handsome Solution">
+<meta name="twitter:description" content="···">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/31/BZOJ-3019-Balkan-OI-2012-Handsome-Solution/"/>
+
+
+
+
+
+  <title>BZOJ 3019 [Balkan OI 2012] Handsome Solution | ChouTi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChouTi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Imagination is the essence of discovery.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/BZOJ-3019-Balkan-OI-2012-Handsome-Solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l0nl1f3">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/123.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChouTi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BZOJ 3019 [Balkan OI 2012] Handsome Solution</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T15:14:24+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>···<br><a id="more"></a></p>
+<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>一个 $n$ 位数是 Handsome 的，当且仅当其中只有 $0/1/2$，而且相邻的两个数构成的数对不在危险集合中。</p>
+<p>$n$ 位数 $A$ 在排列 $P$ 的意义下字典序小于 $B$，则存在一个$ k(1 \leq k &lt; n) $ 使得：</p>
+<script type="math/tex; mode=display">A_{P_1} = B_{P_1}, A_{P_2} = B_{P_2} \ldots A_{P_k} = B_{P_k}, A_{P_{k+1}} < B_{P_{k+1}}</script><p>给定 $n$，危险集合，排列 $P$，以及一个 Handsome 数 $T$，统计在排列 $P$ 意义下小于 $T$ 的 Handsome 数的个数。答案模 $10^9 + 7$。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>首先dp出 $f_{i, l, r}$ 表示长度为 $i$ 的handsome数, 开头为 $l$, 结尾为 $r$, 的方案数, 即 $f_{i, l, r} = \sum_{!danger(a, r)} f(i - 1, l , b)$</p>
+<p>考虑枚举lcp的长度，那么只需要支持填上一位，撤销一位，查询总方案数即可</p>
+<p>那么我们采用线段树，$L_i, R_i$ 表示区间内确定的最左最右点，$\mathrm{way}_i$</p>
+<p>那么合并信息的时候先将左右孩子的信息相乘，即 $\mathrm{way}_p = \mathrm{way}_{\mathrm{lc}_p}\times \mathrm{way}_{\mathrm{rc}_p}$</p>
+<p>如果中间存在空余段， 再乘上 $f(L_{\mathrm{rc_p}} - R_{\mathrm{lc_p}} + 1,a_{R_{\mathrm{lc_p}} }, a_{L_{\mathrm{rc_p}}})$ 即可</p>
+<p>gtmd卡常数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">401234</span>, MaxM = MaxN &lt;&lt; <span class="number">2</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">1000000007</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n, m, p[MaxN], chk[<span class="number">3</span>][<span class="number">3</span>];</div><div class="line"><span class="keyword">int</span> f[MaxN][<span class="number">3</span>][<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> add(x, y) (x + y &gt;= P ? x + y - P : x + y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mul(x, y) ((LL) x * y % P)</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> lb[MaxM], rb[MaxM], way[MaxM], a[MaxN];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	lb[p] = l; rb[p] = r; way[p] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</div><div class="line">	build(p &lt;&lt; <span class="number">1</span>, l, l + r &gt;&gt; <span class="number">1</span>);</div><div class="line">	build(p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, (l + r &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>, r);</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">seg_modify</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> q, <span class="keyword">int</span> d)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(l == r)&#123;</div><div class="line">		a[l] = d;</div><div class="line">		<span class="keyword">if</span>(d &lt; <span class="number">0</span>) lb[p] = rb[p] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(q &lt;= l + r &gt;&gt; <span class="number">1</span>)</div><div class="line">		seg_modify(p &lt;&lt; <span class="number">1</span>, l, l + r &gt;&gt; <span class="number">1</span>, q, d);</div><div class="line">	<span class="keyword">else</span> </div><div class="line">		seg_modify(p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, (l + r &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>, r, q, d);</div><div class="line">	</div><div class="line">	lb[p] = lb[p &lt;&lt; <span class="number">1</span>] ? lb[p &lt;&lt; <span class="number">1</span>] : lb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</div><div class="line">	rb[p] = rb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] ? rb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] : rb[p &lt;&lt; <span class="number">1</span>];</div><div class="line">	way[p] = mul(way[p &lt;&lt; <span class="number">1</span>], way[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>]);</div><div class="line">	<span class="keyword">if</span>(rb[p &lt;&lt; <span class="number">1</span>] &amp;&amp; lb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>])</div><div class="line">		way[p] = mul(way[p], f[lb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] - rb[p &lt;&lt; <span class="number">1</span>] + <span class="number">1</span>][a[rb[p &lt;&lt; <span class="number">1</span>]]][a[lb[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>]]]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> q, <span class="keyword">int</span> d)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(~ d)&#123;</div><div class="line">		<span class="keyword">if</span>(q &gt; <span class="number">1</span> &amp;&amp; ~ a[q - <span class="number">1</span>]) <span class="keyword">if</span>(chk[a[q - <span class="number">1</span>]][d]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span>(q &lt; n &amp;&amp; ~ a[q + <span class="number">1</span>]) <span class="keyword">if</span>(chk[d][a[q + <span class="number">1</span>]]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	seg_modify(<span class="number">1</span>, <span class="number">1</span>, n, q, d);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ans = way[<span class="number">1</span>], i, j;</div><div class="line">	<span class="keyword">if</span>(lb[<span class="number">1</span>] &gt; <span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">for</span>(i = j = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</div><div class="line">			j = add(j, f[lb[<span class="number">1</span>]][i][a[lb[<span class="number">1</span>]]]);</div><div class="line">		ans = mul(ans, j);</div><div class="line">	&#125;	</div><div class="line">	<span class="keyword">if</span>(rb[<span class="number">1</span>] &lt; n)&#123;</div><div class="line">		<span class="keyword">for</span>(i = j = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</div><div class="line">			j = add(j, f[n - rb[<span class="number">1</span>] + <span class="number">1</span>][a[rb[<span class="number">1</span>]]][i]);</div><div class="line">		ans = mul(ans, j);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">char</span> s[MaxN]; <span class="keyword">int</span> T[MaxN];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k, x, y;</div><div class="line">	n = inp();</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++) p[i] = inp();</div><div class="line">	m = inp();</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++)&#123;</div><div class="line">		<span class="keyword">char</span> ch[<span class="number">5</span>];</div><div class="line">		io :: gets(ch);</div><div class="line">		chk[ch[<span class="number">0</span>] - <span class="string">'0'</span> - <span class="number">1</span>][ch[<span class="number">1</span>] - <span class="string">'0'</span> - <span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) f[<span class="number">1</span>][i][i] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">2</span>; i &lt;= n; i++)</div><div class="line">		<span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++)</div><div class="line">			<span class="keyword">for</span>(x = <span class="number">0</span>; x &lt; <span class="number">3</span>; x++)</div><div class="line">				<span class="keyword">if</span>(!chk[x][k])&#123;</div><div class="line">					<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)</div><div class="line">						f[i][j][k] = add(f[i][j][k], f[i - <span class="number">1</span>][j][x]);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">	io :: gets(s + <span class="number">1</span>);	</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++) a[i] = T[i] = s[i] - <span class="string">'0'</span> - <span class="number">1</span>;</div><div class="line">	 </div><div class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">	build(<span class="number">1</span>, <span class="number">1</span>, n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> lcp = n; lcp; lcp--)&#123;</div><div class="line">		<span class="keyword">int</span> np = p[lcp];</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; T[np]; i++)</div><div class="line">			<span class="keyword">if</span>(modify(np, i))</div><div class="line">				ans = add(ans, query());</div><div class="line">		modify(np, <span class="number">-1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; add(ans, <span class="number">1</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/31/BZOJ-3022-Balkan-OI-2012-The-Best-Team-Solution/" rel="next" title="BZOJ 3022 [Balkan OI 2012] The Best Team Solution">
+                <i class="fa fa-chevron-left"></i> BZOJ 3022 [Balkan OI 2012] The Best Team Solution
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/01/2017-Multi-University-Training-Contest-3-solutions/" rel="prev" title="2017 Multi-University Training Contest 3 solutions">
+                2017 Multi-University Training Contest 3 solutions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg3OS82NDQ0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/123.png"
+               alt="l0nl1f3" />
+          <p class="site-author-name" itemprop="name">l0nl1f3</p>
+           
+              <p class="site-description motion-element" itemprop="description">“愿形容我的词 别太荒唐”</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              My friends
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/werkeytom_ftd/" title="WerKeyTom_FTD" target="_blank">WerKeyTom_FTD</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://11dimensions.moe/" title="11Dimensions" target="_blank">11Dimensions</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/a_crazy_czy" title="a_crazy_czy" target="_blank">a_crazy_czy</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.leanote.com/AireenYe/" title="AireenYe" target="_blank">AireenYe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/BearChild/" title="BearChild" target="_blank">BearChild</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/crzbulabula" title="Charming_Chen" target="_blank">Charming_Chen</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hellc.tk/" title="Hellc" target="_blank">Hellc</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://krydom.com/" title="Krydom" target="_blank">Krydom</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://invusr-blog.logdown.com/" title="PYZ" target="_blank">PYZ</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://rapiz.cf" title="Rapiz" target="_blank">Rapiz</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.sengxian.com/" title="Sengxian" target="_blank">Sengxian</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shallwe2000.cc/" title="Shallwe" target="_blank">Shallwe</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sherco.leanote.com" title="Sherco" target="_blank">Sherco</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.leanote.com/yljiang" title="Spana" target="_blank">Spana</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tonyfang.is-programmer.com" title="TonyFang" target="_blank">TonyFang</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/whzzt" title="whzzt" target="_blank">whzzt</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/xym_csdn" title="XYM" target="_blank">XYM</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/yanQval" title="RedSun" target="_blank">RedSun</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zcysky.cnblogs.com/" title="zcysky" target="_blank">zcysky</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zzqsblog.cnblogs.com/" title="ZZQ" target="_blank">ZZQ</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">l0nl1f3</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
