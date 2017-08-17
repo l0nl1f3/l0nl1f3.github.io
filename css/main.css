@@ -1677,7 +1677,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #70fb46;
+  background: #a6617a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2761,6 +2761,7 @@ body {
   background: url("/images/Dragon.jpg");
 }
 .content {
+  padding-left: 5px;
   border-radius: 10px;
   margin-top: 60px;
   background: rgba(255,255,255,0.5) none repeat scroll !important;
