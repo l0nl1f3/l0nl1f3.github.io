@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-19T13:50:13.285Z</updated>
+  <updated>2017-08-22T09:24:49.163Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017-Multi-University-Training-Contest-9-solutions</title>
+    <link href="http://yoursite.com/2017/08/22/2017-Multi-University-Training-Contest-9-solutions/"/>
+    <id>http://yoursite.com/2017/08/22/2017-Multi-University-Training-Contest-9-solutions/</id>
+    <published>2017-08-22T09:22:03.000Z</published>
+    <updated>2017-08-22T09:24:49.163Z</updated>
+    
+    <content type="html"><![CDATA[<p>几何日</p>
+<a id="more"></a>
+<p>mdzz全是几何题 几何题毁我青春</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几何日&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>HackerEarth August Circuits 17 Approximate : Gary in OS Class</title>
