@@ -82,6 +82,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="ChouTi's Blog" type="application/atom+xml" />
 
@@ -95,17 +97,17 @@
 
 
 
-<meta name="description" content="神经病放假了还要被支配">
+<meta name="description" content="…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CodeChef OCT11 Sine Partition Function Solution">
-<meta property="og:url" content="http://yoursite.com/2017/07/30/CodeChef-OCT11-Sine-Partition-Function-Solution/index.html">
+<meta property="og:title" content="CodeChef August Lunchtime 2017 LTIME51 Solutions">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/CodeChef-August-Lunchtime-2017-LTIME51-Solutions/index.html">
 <meta property="og:site_name" content="ChouTi&#39;s Blog">
-<meta property="og:description" content="神经病放假了还要被支配">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-30T14:21:36.670Z">
+<meta property="og:updated_time" content="2017-08-30T10:42:08.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CodeChef OCT11 Sine Partition Function Solution">
-<meta name="twitter:description" content="神经病放假了还要被支配">
+<meta name="twitter:title" content="CodeChef August Lunchtime 2017 LTIME51 Solutions">
+<meta name="twitter:description" content="…">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/30/CodeChef-OCT11-Sine-Partition-Function-Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/CodeChef-August-Lunchtime-2017-LTIME51-Solutions/"/>
 
 
 
 
 
-  <title>CodeChef OCT11 Sine Partition Function Solution | ChouTi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>CodeChef August Lunchtime 2017 LTIME51 Solutions | ChouTi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -258,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/30/CodeChef-OCT11-Sine-Partition-Function-Solution/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/CodeChef-August-Lunchtime-2017-LTIME51-Solutions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="l0nl1f3">
@@ -275,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CodeChef OCT11 Sine Partition Function Solution</h1>
+          <h1 class="post-title" itemprop="name headline">CodeChef August Lunchtime 2017 LTIME51 Solutions</h1>
         
 
         <div class="post-meta">
@@ -287,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T20:44:05+08:00">
-                2017-07-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T12:52:29+08:00">
+                2017-08-30
               </time>
             
 
@@ -322,31 +324,14 @@
       
 
       
-        <p>神经病放假了还要被支配</p>
-<a id="more"></a>
-<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>求</p>
-<script type="math/tex; mode=display">\begin{aligned}
-\sum_{\sum_{i=1}^N k_i = M} \prod_{i = 1} ^ N \sin(k_iX)
-\end{aligned}</script><p>其中 $m \leq 10^9, n \leq 30, X &lt; 2\pi$</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>设 $f(n, m) = \sum_{\sum_{i=1}^n k_i = m} \prod_{i = 1} ^ n \sin(k_iX)<br>$</p>
-<p>考虑把他当做dp做，就是枚举第 $n$ 个 $k_i$ 的取值</p>
-<p>得到 $f(n, m) = \sum_{k_n = 0} ^{m} f(n - 1, m - k_n) \sin(k_nX) $</p>
-<p>若 $k_n = 0$, $\sin (0) = 0$，这一项忽略</p>
-<p>当 $k = 1$, $\sin(X)$不动，保留 $f(n - 1, m - 1) \sin(X)$</p>
-<p>当 $k\geq 2$时， 求的是 $\sum_{k_n = 2} ^ m f(n - 1, m - k_n) sin(k_nX)$,我们尝试用和角公式将其化简</p>
-<script type="math/tex; mode=display">\begin{aligned}
-&=\sum_{k_n = 2} ^ m f(n - 1, m - k_n) \sin((k_n - 1 + 1)X) \\
-&= \sum_{k_n = 2} ^ m f(n - 1, m - k_n) (\sin((k_n −1)X)\cos(X) + \sin(X)\cos((k_n − 1)X) )\\
-&= \sum_{k_n = 2} ^ m f(n - 1, m - k_n) (2\sin((k_n −1)X)\cos(X) + \sin(X)\cos((k_n − 1)X) -\sin((k_n −1)X)\cos(X))\\
-&=  \sum_{k_n = 2} ^ m f(n - 1, m - k_n) (\sin((k_n −1)X)2\cos(X)−\sin((k_n − 2)X)) \\
-&= 2\cos(X)\sum_{k_n = 2} ^ m f(n - 1, m - k_n) \sin((k_n - 1) X)  - \sum_{k_n = 2} ^ m \sin((k_n - 2)X)\\
-&= 2\cos(X) f(n - 1, m - 1) - f(n, m - 2)
-\end{aligned}</script><p>那么就是 $f(n, m) = f(n - 1, m - 1) + f(n - 1, m - 1) - f(n, m - 2)$</p>
-<p>然后你维护一下（这段是为了学习使用MathJax画列向量)<br>$<br>  \begin{bmatrix}<br>   f(0, m) &amp; f(0, m + 1)\\<br>   f(1, m) &amp; f(1, m + 1)\\<br>   \ldots\\<br>   f(n, m) &amp; f(n, m + 1)<br>  \end{bmatrix}<br>$ 和一个转移矩阵的 $n - 1$ 次幂即可在 $O(m ^ 3 \log n)$ 时间内求出答案</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">70</span>;</div><div class="line">db X; <span class="keyword">int</span> n, m;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> db mat[MaxN][MaxN];</div><div class="line">mat a, b, c, t;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(mat a, mat b, mat c)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; (n &lt;&lt; <span class="number">1</span>); i++)</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; (n &lt;&lt; <span class="number">1</span>); j++)&#123;</div><div class="line">			t[i][j] = <span class="number">0</span>;</div><div class="line">			<span class="keyword">for</span>(k = <span class="number">0</span>; k &lt; (n &lt;&lt; <span class="number">1</span>); k++)</div><div class="line">				t[i][j] = (t[i][j] + a[i][k] * b[k][j]);</div><div class="line">		&#125;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; (n &lt;&lt; <span class="number">1</span>); i++)</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; (n &lt;&lt; <span class="number">1</span>); j++)</div><div class="line">			c[i][j] = t[i][j];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">exp</span><span class="params">(mat a, <span class="keyword">int</span> N)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; (n &lt;&lt; <span class="number">1</span>); i++)</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; (n &lt;&lt; <span class="number">1</span>); j++)</div><div class="line">			c[i][j] = (i == j);</div><div class="line">	<span class="keyword">for</span>(; N; N &gt;&gt;= <span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">if</span>(N &amp; <span class="number">1</span>)</div><div class="line">			mul(c, a, c);</div><div class="line">		mul(a, a, a);</div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j, k, T = inp();</div><div class="line">	</div><div class="line">	<span class="keyword">while</span>(T--)&#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; X;</div><div class="line">		<span class="keyword">double</span> x = <span class="built_in">sin</span>(X), y = <span class="built_in">cos</span>(X);</div><div class="line">		<span class="keyword">if</span>(n &gt; m) &#123;</div><div class="line">			<span class="built_in">puts</span>(<span class="string">"0"</span>); </div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; (n &lt;&lt; <span class="number">1</span>); i++)</div><div class="line">			<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; (n &lt;&lt; <span class="number">1</span>); j++)</div><div class="line">				b[i][j] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; (n &lt;&lt; <span class="number">1</span>); i += <span class="number">2</span>)&#123;</div><div class="line">			b[i][i] = <span class="number">2</span> * y;</div><div class="line">			b[i][i + <span class="number">1</span>] = <span class="number">-1</span>;</div><div class="line">			b[i][i + <span class="number">2</span>] = x;</div><div class="line">			b[i + <span class="number">1</span>][i] = <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="built_in">exp</span>(b, m - <span class="number">1</span>);</div><div class="line">		</div><div class="line">		db ans = x * c[<span class="number">0</span>][(n - <span class="number">1</span>)  &lt;&lt; <span class="number">1</span>];</div><div class="line">		</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%.20lf\n"</span>, ans);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当然我发现事情有一丝蹊跷</p>
-<p>因为我发现还有不是矩乘的做法。。 完结失败。。</p>
-
+        <p>…<br><a id="more"></a></p>
+<h1 id="MATPAN"><a href="#MATPAN" class="headerlink" title="MATPAN"></a>MATPAN</h1><p>···</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">51234</span>;</div><div class="line"><span class="keyword">int</span> T; <span class="keyword">char</span> s[MaxN]; <span class="keyword">int</span> c[MaxN], b[<span class="number">27</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">	<span class="keyword">while</span>(T--) &#123;</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) c[i] = inp();</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>); <span class="keyword">int</span> n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</div><div class="line">		<span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span>(b));</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++) b[s[i] - <span class="string">'a'</span>]++;</div><div class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) <span class="keyword">if</span>(!b[i]) ans += c[i]; </div><div class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="MATDYS"><a href="#MATDYS" class="headerlink" title="MATDYS"></a>MATDYS</h1><p>二进制翻转 。。 给的看起来就是FFT的过程。。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> q, n; u64 K;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; q;</div><div class="line">	<span class="keyword">while</span>(q--) &#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; K;</div><div class="line">		u64 ans = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">			ans &lt;&lt;= <span class="number">1</span>;</div><div class="line">			ans |= (K &amp; <span class="number">1</span>);</div><div class="line">			K &gt;&gt;= <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="MATTEG"><a href="#MATTEG" class="headerlink" title="MATTEG"></a>MATTEG</h1><p>$O(n*5^n)$ 状压DP</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">1234</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxState = <span class="number">1953125</span> + MaxN; </div><div class="line"><span class="keyword">int</span> r, c, n, sx, sy, x[MaxN], y[MaxN], val[MaxN][MaxN];</div><div class="line"></div><div class="line"><span class="keyword">int</span> dx[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span>&#125;;</div><div class="line"><span class="keyword">int</span> dy[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> f[MaxState], <span class="built_in">exp</span>[MaxN];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_bit</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> i)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> (p/<span class="built_in">exp</span>[i]) % <span class="number">5</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> ans = val[sx][sy], i, j, k;</div><div class="line">	f[<span class="number">0</span>] = ans;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; <span class="built_in">exp</span>[n]; i++) &#123;</div><div class="line">		<span class="keyword">int</span> nx = sx, ny = sy;</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">			<span class="keyword">if</span>(k = get_bit(i, j))</div><div class="line">				nx += dx[k] * x[j],</div><div class="line">				ny += dy[k] * y[j];</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		f[i] = <span class="number">-1e9</span>;</div><div class="line">		<span class="keyword">if</span>(nx &lt; <span class="number">0</span> || nx &gt;= r || ny &lt; <span class="number">0</span> || ny &gt;= c)	<span class="keyword">continue</span>; </div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; n; j++) </div><div class="line">			<span class="keyword">if</span>(k = get_bit(i, j))</div><div class="line">				cmax(f[i], f[i - <span class="built_in">exp</span>[j] * k] + val[nx][ny]);</div><div class="line">		cmax(ans, f[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="MATCUT"><a href="#MATCUT" class="headerlink" title="MATCUT"></a>MATCUT</h1><p>点分治</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
       
     </div>
 
@@ -382,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/29/iFrog-round-19-Solution/" rel="next" title="iFrog round 19 Solution">
-                <i class="fa fa-chevron-left"></i> iFrog round 19 Solution
+              <a href="/2017/08/29/AtCoder-Grand-Contest-019-Solutions/" rel="next" title="AtCoder Grand Contest 019 Solutions">
+                <i class="fa fa-chevron-left"></i> AtCoder Grand Contest 019 Solutions
               </a>
             
           </div>
@@ -391,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/31/BZOJ-3022-Balkan-OI-2012-The-Best-Team-Solution/" rel="prev" title="BZOJ 3022 [Balkan OI 2012] The Best Team Solution">
-                BZOJ 3022 [Balkan OI 2012] The Best Team Solution <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATPAN"><span class="nav-number">1.</span> <span class="nav-text">MATPAN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MATDYS"><span class="nav-number">2.</span> <span class="nav-text">MATDYS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MATTEG"><span class="nav-number">3.</span> <span class="nav-text">MATTEG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MATCUT"><span class="nav-number">4.</span> <span class="nav-text">MATCUT</span></a></li></ol></div>
             
 
           </div>
@@ -775,47 +756,7 @@
         j.async = true;
         e.parentNode.insertBefore(j, e);
       })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -833,6 +774,26 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
   
 
 
