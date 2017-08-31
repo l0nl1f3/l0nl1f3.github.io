@@ -45,7 +45,7 @@
     <link href="http://yoursite.com/2017/08/29/AtCoder-Grand-Contest-019-Solutions/"/>
     <id>http://yoursite.com/2017/08/29/AtCoder-Grand-Contest-019-Solutions/</id>
     <published>2017-08-29T04:37:56.000Z</published>
-    <updated>2017-08-31T13:14:14.330Z</updated>
+    <updated>2017-08-31T13:17:27.320Z</updated>
     
     <content type="html"><![CDATA[<p>。。。<br><a id="more"></a></p>
 <h1 id="Ice-Cream-Store"><a href="#Ice-Cream-Store" class="headerlink" title="Ice Cream Store"></a>Ice Cream Store</h1><p>贪心<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> q, h, s, d, n;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; q &gt;&gt; h &gt;&gt; s &gt;&gt; d &gt;&gt; n;</div><div class="line">	LL ans = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> c = min(q * <span class="number">8</span>, h * <span class="number">4</span>);</div><div class="line">	c = min(c, min(s * <span class="number">2</span>, d));</div><div class="line">	ans += (LL) c * (n/<span class="number">2</span>);</div><div class="line">	<span class="keyword">if</span>(n &amp; <span class="number">1</span>) &#123;</div><div class="line">		ans += min(min(q * <span class="number">4</span>, h * <span class="number">2</span>), s);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; ans;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -70,7 +70,7 @@
 <p>设一个矩阵 $G(i, j), i \in [0, n], j \in [0, m]$, 以 $G(i, j)\to G(i, j + 1)$ 表示答一个No，$G(i, j) \to G(i + 1, j)$ 表示答一个Yes， $G(i, j)$ 的点权为对应的期望。从左上角 $S$ 走到 $T$ 的期望路径长度就是答案。</p>
 <p>剩下的不想编了。</p>
 <p>剩下的我打算重新编</p>
-<p><img src="uploads/AGC019F_table.png" alt="图片"></p>
+<p><img src="l0nl1f3.github.io/uploads/AGC019F_table.png" alt="图片"></p>
 ]]></content>
     
     <summary type="html">
