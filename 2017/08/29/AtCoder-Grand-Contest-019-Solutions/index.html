@@ -103,7 +103,7 @@
 <meta property="og:description" content="。。。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/08/29/AtCoder-Grand-Contest-019-Solutions/uploads/AGC019F_table.png">
-<meta property="og:updated_time" content="2017-08-31T13:19:48.700Z">
+<meta property="og:updated_time" content="2017-08-31T13:25:49.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AtCoder Grand Contest 019 Solutions">
 <meta name="twitter:description" content="。。。">
@@ -348,7 +348,8 @@
 <p>剩下的不想编了。</p>
 <p>剩下的我打算重新编</p>
 <p><img src="uploads/AGC019F_table.png" alt="图片"></p>
-
+<p>就是上面这个图，左下为 $(0, 0)$，向右上画一条 $45$ 度的对角线，不穿过对角线一定是 $n$, 否则会对答案有 $\frac 1 2$ 的概率产生 $1$ 的贡献，枚举对角线上的点 $\min(n, m)$ 个，求总方案数即可。即 $\sum_{i = 1} ^ {m} {i + i\choose i}{n - i + m - i\choose n -i}$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">n = inp(); m = inp(); </div><div class="line"><span class="keyword">if</span>(n &lt; m) swap(n, m);</div><div class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">	<span class="keyword">int</span> wayA = C(i + i, i);</div><div class="line">	<span class="keyword">int</span> wayB = C(n - i + m - i, n - i);</div><div class="line">	ans += (LL) wayA * wayB % P;</div><div class="line">	ans %= P; </div><div class="line">&#125;</div><div class="line"></div><div class="line">ans = (LL) ans * <span class="built_in">exp</span>(C(n + m, n), P - <span class="number">2</span>) % P;</div><div class="line">ans = (LL) ans * (P + <span class="number">1</span>) / <span class="number">2</span> % P;</div><div class="line"></div><div class="line"><span class="built_in">cout</span> &lt;&lt; (ans + n) % P;</div></pre></td></tr></table></figure>
       
     </div>
 
