@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-11T14:24:39.025Z</updated>
+  <updated>2017-10-31T13:54:52.797Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>迁移失败的测试</title>
+    <link href="http://yoursite.com/2017/10/31/%E8%BF%81%E7%A7%BB%E5%A4%B1%E8%B4%A5%E7%9A%84%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2017/10/31/迁移失败的测试/</id>
+    <published>2017-10-31T13:53:40.000Z</published>
+    <updated>2017-10-31T13:54:52.797Z</updated>
+    
+    <content type="html"><![CDATA[<p>…<br><a id="more"></a></p>
+<p>昨天搞了一下午迁移好像把什么搞崩了。。。 </p>
+<p>现在看看是不是真的崩了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;…&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CodeChef September Long Challenge 2017 SEPT17 Solutions</title>
@@ -713,30 +734,6 @@ f(x - o) &= \sum_{i = 0} ^ {n} c_i(x - o) ^ i\\
     
     
       <category term="Hackerrank" scheme="http://yoursite.com/tags/Hackerrank/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写作测试</title>
-    <link href="http://yoursite.com/2017/07/23/%E5%86%99%E4%BD%9C%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2017/07/23/写作测试/</id>
-    <published>2017-07-23T09:31:40.000Z</published>
-    <updated>2017-07-23T11:09:47.009Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>居然是markdown</p>
-<script type="math/tex; mode=display">\begin{aligned}
-f(n) &= \sum_{d|n} g(d) \\
-g(n) &= \sum_{d|n} \mu(d) f(\frac{n}{d})
-\end{aligned}</script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a
-    
-    </summary>
-    
-    
-      <category term="测试，杂文" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%EF%BC%8C%E6%9D%82%E6%96%87/"/>
     
   </entry>
   
