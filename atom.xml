@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-13T11:15:20.060Z</updated>
+  <updated>2018-03-10T09:14:14.863Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,115 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CodeChef 泛做(40/100)</title>
+    <link href="http://yoursite.com/2018/03/10/CodeChef-%E6%B3%9B%E5%81%9A-40-100/"/>
+    <id>http://yoursite.com/2018/03/10/CodeChef-泛做-40-100/</id>
+    <published>2018-03-10T09:12:02.000Z</published>
+    <updated>2018-03-10T09:14:14.863Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然标题看起来是正在更新，其实已经tj了</p>
+<p>本来目标是 1/3 现在看起来多了一点就当做了1/2吧</p>
+<a id="more"></a>
+<h1 id="DISTNUM"><a href="#DISTNUM" class="headerlink" title="DISTNUM"></a>DISTNUM</h1><p>平衡树重标号后就是常规 $(i, last_i)$ 二维数点类问题</p>
+<h1 id="CLOWAY"><a href="#CLOWAY" class="headerlink" title="CLOWAY"></a>CLOWAY</h1><p>有毒的 LA 题， 把问题转化成在强乘积图上求 $tr[G^k]$</p>
+<p>一个trick : 要求 $tr[G^{1\ldots k}]$，暴力做是 $tkn^3$ 的，但是注意到如果我们预处理了 $G^{aP}, G^{0\ldots P - 1}$ ，每次就可以 $O(n^2)$ 的求出一个 $k$ 的trace, 取 $P = \sqrt k$, 复杂度 $t(n^3\sqrt k+kn^2)$，可以避免使用化零多项式</p>
+<p>另一个<br>$tr[F\cdot G] = \sum_{\alpha \in sp(F)}\sum_{\beta \in sp(G)} (\alpha+1)(\beta+1) - 1\\<br>tr[F^k]= \sum_{\alpha \in sp(F)} \alpha ^ k$</p>
+<p>区间的强乘积图的 trace 可以通过卷积求出，</p>
+<h1 id="CHEFBOOK"><a href="#CHEFBOOK" class="headerlink" title="CHEFBOOK"></a>CHEFBOOK</h1><p>LP -&gt; 费用流</p>
+<p>求 $p = \max {c^TP | AP \le B, P \ge 0}$, 正常思路肯定是<del>单纯形</del></p>
+<p>注意到A的一行恰有一个1一个-1,不能建费用流。故对偶到 $A^T$ 上</p>
+<p>由于 $AP\le B$, 则 $y^TAP\le y^TB$</p>
+<p>$y^TA = C^T$, 则 $c^TP=y^TAP \leq y^TB$</p>
+<p>那么 $y^TB$ 的下界是 $c^TB$ 的上界，问题被对偶成 $q = \min {y^TB |      yA^T = C, y\ge 0}$</p>
+<p>此时一列只有一个1，一个-1，将每一行当做一个点，每一列当做一条边，$\forall i \in column, (neg_i, pos_i, inf, B_i)$, 对于 $C_i &gt; 0, (S, i, C_i, 0)$, 否则 $(i, T, C_i, 0)$</p>
+<p>最后最小费用流答案 $\sum L$ 即可，用差分约束求方案</p>
+<h1 id="DEVLOCK"><a href="#DEVLOCK" class="headerlink" title="DEVLOCK"></a>DEVLOCK</h1><p>对于 $10^i \bmod p$ 的每一种情形分别处理，合并的时候NTT</p>
+<h1 id="FNCS"><a href="#FNCS" class="headerlink" title="FNCS"></a>FNCS</h1><p>考虑对每个function答案的贡献，傻逼分块</p>
+<h1 id="QRECT"><a href="#QRECT" class="headerlink" title="QRECT"></a>QRECT</h1><p>补集转化，分治 ( 妈妈我终于会cdq分治了</p>
+<h2 id="cdq分治的思想"><a href="#cdq分治的思想" class="headerlink" title="cdq分治的思想"></a>cdq分治的思想</h2><p>考虑solve(l,r), mid = (l+r)/2，需要计算的是 $[l, mid]$ 的修改对 $[mid + 1, r]$ 的询问带来的增量</p>
+<p>如果是一个二维偏序，则对两侧的二维点按照一维排序，指针扫扫拿个一维数据结构维护一下即可</p>
+<h1 id="GRAPHCNT"><a href="#GRAPHCNT" class="headerlink" title="GRAPHCNT"></a>GRAPHCNT</h1><p>支配树 ( 不可能考的</p>
+<h1 id="GNUM"><a href="#GNUM" class="headerlink" title="GNUM"></a>GNUM</h1><p>傻屌网络流，从一个 $(n^2, n^4)$的最大流开始，对所有质数新建一个点，每个点向他所有质因子连边，答案不变，图的级别变为 $(n^2, n^2*9)$</p>
+<h1 id="SEAEQ"><a href="#SEAEQ" class="headerlink" title="SEAEQ"></a>SEAEQ</h1><p>傻屌DP</p>
+<h1 id="SEAORD"><a href="#SEAORD" class="headerlink" title="SEAORD"></a>SEAORD</h1><p>假设 $\sum A &gt; \sum B$</p>
+<p>答案一定为 $\max(\sum A, \max a_i+b_i)$</p>
+<p>若 $\max a_i + b_i &gt; \sum A$, 设 $a_i + b_i$ 最大值对应的位置为 $k$, 则将 $k$ 安排在 $(0, a_k)$, 其余的在第一机上从 $a_k$ 开始顺序分配，第二机上从 0 开始顺序分配，由于 $a_k + b_k &gt; sum a_i &gt; sum b_i$，故不会冲突</p>
+<p>否则xjb random_shuffle一下两台机子上安排任务的标号，不知道为什么能过, 一号机上就连续的做，二号机考虑下任务冲突即可</p>
+<h1 id="PRIMEDST"><a href="#PRIMEDST" class="headerlink" title="PRIMEDST"></a>PRIMEDST</h1><p>一个没什么新意的点分治( 妈妈我终于会点分治了</p>
+<h1 id="LYRC"><a href="#LYRC" class="headerlink" title="LYRC"></a>LYRC</h1><p>复习fail树，树状数组好难</p>
+<h1 id="TWOCOMP"><a href="#TWOCOMP" class="headerlink" title="TWOCOMP"></a>TWOCOMP</h1><p>$(u_1, v_1)$ 与 $(u_2, v_2)$ 点相交当且仅当 $lca(u_1, v_1)$ 在 $(u_2, v_2)$ 上，或反之</p>
+<p>二分图最大权独立集 -&gt; 最小割</p>
+<h1 id="LEBOXES"><a href="#LEBOXES" class="headerlink" title="LEBOXES"></a>LEBOXES</h1><p>Meet in the middle, $O(2^{\frac n 2}*n^2m)$</p>
+<h1 id="DGCD"><a href="#DGCD" class="headerlink" title="DGCD"></a>DGCD</h1><p>考虑链上做法<br>$(a, b, c) = (a, b - a, c - b)$, 差分后变成单点修改，区间查询gcd, 和 区间加，单点查询两个独立的问题</p>
+<p>链剖线段树 $O(n\log^3)$, 有一个log是gcd的，可以去掉</p>
+<h1 id="COT5"><a href="#COT5" class="headerlink" title="COT5"></a>COT5</h1><p>线段树模拟Treap</p>
+<p>求LCA+求任意点深度两个问题</p>
+<p>LCA：key在 $[key_u, key_v]$ 之间 weight最大的点</p>
+<p>深度: 中序遍历，前缀递减单调栈长度+后缀反着的递减单调栈长度-1 (关于weight的)</p>
+<p>线段树单点修改，前缀单调栈查询</p>
+<p>左到右合并，用左孩子最大值插右孩子单调栈， $O(\log^2n)$</p>
+<h1 id="MONOPOLY"><a href="#MONOPOLY" class="headerlink" title="MONOPOLY"></a>MONOPOLY</h1><p>SDOI2017树点染色, 终于会LCT了日啊 。。 </p>
+<p>这个LCT的Splay。。 实现的时候注意树根的一些特判。。毒的一笔</p>
+<h1 id="SEAARC"><a href="#SEAARC" class="headerlink" title="SEAARC"></a>SEAARC</h1><p>分 $cnt_c &gt; lim$ 和 $cnt_c &lt; lim$ 的做一下，前者是 $O(nlim\log n)$ 的， 后者是 $O(\frac {n^2}{lim}) $ 的 </p>
+<h1 id="QUERY"><a href="#QUERY" class="headerlink" title="QUERY"></a>QUERY</h1><p>区间加等差数列-&gt;等差数列拆分之后还是等差数列</p>
+<p>维护区间和，区间加上的公差和首项的和，标记永久化</p>
+<h1 id="DIFTRIP"><a href="#DIFTRIP" class="headerlink" title="DIFTRIP"></a>DIFTRIP</h1><p>类似后缀排序 。。 倍增就好了</p>
+<h1 id="SEINC"><a href="#SEINC" class="headerlink" title="SEINC"></a>SEINC</h1><p>转化成可以给任意 $i &lt; j$, $C_i += 4, C_j -= 4$, 最小化 $\sum max(C_i, 0)$</p>
+<p>注意到 $-1, 0, 1$ 不用考虑 。。 然后找到个 $2, 3$就记下来，到 $-2, -3$ 的时候贪心抵消</p>
+<h1 id="TAPAIR"><a href="#TAPAIR" class="headerlink" title="TAPAIR"></a>TAPAIR</h1><p>经典技巧。对于无向图，对每个非树边随机个权值，每个树边的权值是所有覆盖他的非树边的权值的xor, 然后如果一个子集是割集就是，这个子集存在一个子集xor=0,。</p>
+<p>就你闭上眼睛感受一下就好了吧 。。</p>
+<h1 id="GERALD07"><a href="#GERALD07" class="headerlink" title="GERALD07"></a>GERALD07</h1><p>按 r 排序询问，维护一个标号最大生成树，每次查下生成树上 $\ge l$ 的边有多少条就好了吧 。。</p>
+<h1 id="CNTDSETS"><a href="#CNTDSETS" class="headerlink" title="CNTDSETS"></a>CNTDSETS</h1><p>大力容斥啊 。。 就是你现在的这个一定要存在有坐标为0吧。。随便算算</p>
+<h1 id="RIVIPLE"><a href="#RIVIPLE" class="headerlink" title="RIVIPLE"></a>RIVIPLE</h1><p>每个点拆成 $m$ 个，分别表示购买了对应圆，圆相交就在之间连一条边。</p>
+<p>注意到如果 $R_i$ 升序，若 $(i, j) -&gt; (a, b)$, 则 $(i, j) -&gt; (a, \ge b)$ 均有连边，差分优化建图</p>
+<h1 id="BWGAME"><a href="#BWGAME" class="headerlink" title="BWGAME"></a>BWGAME</h1><h1 id="STREETTA"><a href="#STREETTA" class="headerlink" title="STREETTA"></a>STREETTA</h1><p>区间加等差很简单。</p>
+<p>区间对等差数列取Max, 每次将一个线段下放到 $\log $ 个区间。对于每个区间，设定优势线段为作为大的时间较长的线段，每次保留更优势的线段，若发生淘汰则下放原线段</p>
+<p>注意到优势线段的比较不需要写线段求交，只要根据l, mid, r时两线段大小关系分类讨论即可</p>
+<h1 id="TICKETS"><a href="#TICKETS" class="headerlink" title="TICKETS"></a>TICKETS</h1><p>考虑找最小的不合法区间，若将人看成边，菜看成点，那么就是要求一个最小的联通子图，满足$|V|&gt;|E|$, 注意肯定可以调整到 $|V|=|E|+1$,考虑在一个是树子联通块上加两条边，无论如何都可以将没被覆盖到的树边和点删除。</p>
+<p>那么就只剩下两个点之间连三条边，和两个环之间连一条路径两种情况</p>
+<p>前者直接BFS, 考虑后者</p>
+<p>枚举后者的基树的树根，强制两环LCA在树根。再枚举一条非树边就能得到一个环。非法情况不会使答案变优</p>
+<h1 id="TREECNT2"><a href="#TREECNT2" class="headerlink" title="TREECNT2"></a>TREECNT2</h1><p>发现询问很少 做完了</p>
+<p>考虑答案是 $\sum f_i\mu_i$, $f_i$ 为权值为 $i$ 的倍数的路径，这个只需要把 $i$ 的倍数的边拿出来并查集一下就好了</p>
+<p>离线询问，计算每个 $\mu <em> f$ 对答案的贡献，先把没有涉及到修改的边为当前 i 的倍数的树建出来。枚举询问，每次只需要做 $O(q)$ 次并查集操作，这个部分的复杂度是 $O(2^c</em>q^2\log n)$, 其他部分的复杂度为 $O(Z+n\ln n)$</p>
+<p>复杂度是假的AC是真的。。。</p>
+<h1 id="CONNECT"><a href="#CONNECT" class="headerlink" title="CONNECT"></a>CONNECT</h1><p>这个题做烂了吧，随机一个$n\times m \to k$ 的映射，斯坦纳树求包含所有颜色的最小权联通块即可</p>
+<p>考虑真实答案中的 $K$ 个颜色，对应的 $K^K$ 种标号方式有 $K!$ 是对的，错误的不会使答案变优</p>
+<p>正确率 $\frac{K!}{K^K}$，太低了，多随几次</p>
+<h1 id="PARADE"><a href="#PARADE" class="headerlink" title="PARADE"></a>PARADE</h1><p>考虑费用流, 拆点建图，若固定 $C$</p>
+<p>考虑题目中的代价相当于每次走一条路径会覆盖终点，减少 $C$ 的代价</p>
+<p>那么答案就是增广费用+(n-增广次数) * C, 每次增广的费用是单调不降的，故可以每次询问二分出最优分界点</p>
+<h1 id="EASYEX"><a href="#EASYEX" class="headerlink" title="EASYEX"></a>EASYEX</h1><p>设 $f_{i, j} = $ 前 i 个数字占用了 $j$ 个位置，剩下留空的贡献</p>
+<p>枚举当前位填了多少次 $f_{i, j} = \sum_{k} f_{i-1,j-k} <em> g_k </em> {j \choose k}$</p>
+<p>容斥求 $g_i = i^F-\sum_{j=1}^{i-1}{i\choose j}g_j$</p>
+<p>注意到上面的转移是EGF的快速幂，FFT即可，复杂度 $O(F^2+LF\log LF\log L)$</p>
+<p>值得一提的是 $g$ 好像长得和斯特林数差不多 。。。</p>
+<h1 id="COUNTARI"><a href="#COUNTARI" class="headerlink" title="COUNTARI"></a>COUNTARI</h1><p>分块FFT<br>若 $min(|i-j|, |k-j|) &lt; B$, 暴力枚举一个</p>
+<p>否则用FFT求出 $a_i + a_k$ 每个取值的方案数</p>
+<p>复杂度 $O(nB + \frac{n}{B} V\log V)$</p>
+<h1 id="TKCONVEX"><a href="#TKCONVEX" class="headerlink" title="TKCONVEX"></a>TKCONVEX</h1><p>若 $n \ge 70$, 一定有解 </p>
+<p>做 $n$ 次 ${2k \choose k}$ 的爆搜</p>
+<h1 id="MATCH"><a href="#MATCH" class="headerlink" title="MATCH"></a>MATCH</h1><p>设 $f(i, S) = $ 右侧前 $i$ 个点考虑完了，左边所有满足 hall 定理的子集。这样做状态是 $2^{32}$ 的，显然不行</p>
+<p>注意到若 $u \in S$, 则任意 $v \in u$ 均 $v \in S$</p>
+<p>这样 $n=5$ 的时候就只有406个合法状态</p>
+<h1 id="EVILBOOK"><a href="#EVILBOOK" class="headerlink" title="EVILBOOK"></a>EVILBOOK</h1><p>爆搜</p>
+<h1 id="TRIPS"><a href="#TRIPS" class="headerlink" title="TRIPS"></a>TRIPS</h1><p>Big-Small</p>
+<p>对于 $P \ge B$ 的询问，答案不会超过 $\frac{n}{B}$，设 $f_{i, j}$ 为 $i$ 向上走 $2^j$ 距离走到的点，暴力答案步</p>
+<p>否则只有 $B$ 个不同的 $P$, 设 $f_{i, j}$ 为当前距离走 $2^j$ 步走到的点</p>
+<p>复杂度 $O((\frac{n^2}{B}+Bn)\log n)$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然标题看起来是正在更新，其实已经tj了&lt;/p&gt;
+&lt;p&gt;本来目标是 1/3 现在看起来多了一点就当做了1/2吧&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2017-2018 Northeastern European Regional Contest (NEERC 17) Solutions</title>
@@ -8384,64 +8493,6 @@ f(x - o) &= \sum_{i = 0} ^ {n} c_i(x - o) ^ i\\
     <summary type="html">
     
       &lt;p&gt;naive出题人&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Tiao Laoshi&#39;s Speech</title>
-    <link href="http://yoursite.com/2017/07/24/Tiao-Laoshi-s-Speech/"/>
-    <id>http://yoursite.com/2017/07/24/Tiao-Laoshi-s-Speech/</id>
-    <published>2017-07-24T06:11:43.000Z</published>
-    <updated>2017-07-24T06:14:29.601Z</updated>
-    
-    <content type="html"><![CDATA[<p>正衡中学八年级期中表彰第一名同学的发言稿 - 孔瑞阳</p>
-<p>想了想还是把偶像的发言稿搬过来了<br><a id="more"></a></p>
-<p>说世界很大，我想去看看的人，都会说自己总是想看看世界究竟有多大。其实，我猜他们是想证明，他们有自己的辽阔世界，他们不要别人设定的那个狭隘的空间。</p>
-<p>我的第一个理想，叫做No.1 </p>
-<p>我在一个毫不起眼的小学上学，从那时起，就一直是班级里的千年老二。当时的我也没有进取之心，反正在这种不入流的小学拿了第一名也不算什么成就。很快就到了小升初，我怕在这个高手云集的学校落下别人太多，态度才稍微认真了些。 </p>
-<p>第一次期中考试，却神奇地取得了很优异的成绩。 </p>
-<p>那时我才萌发出一个念头：世界很大，我想去看看。<br>于是我更加努力起来，在完成平时的学习任务后只干一件事：刷题。功夫不负有心人，在第二次期中考试，我刷到了2道英语阅读原题。 </p>
-<p>然后我退步了7名。 </p>
-<p>接着我才知道，学习刻苦并不是指一昧地去针对自己的某个弱点去做一项填鸭式的练习，而是该明白“what why how”，即自己的弱点是什么，自己为什么会有这个弱点，要改正这个弱点应该怎么样。大量的习题只能解决“what”，但我们真正要解决的问题是“why”。比如说数学因为不认真听课而导致很多题目不会，这么一说怎么改正当然一目了然。 </p>
-<p>于是今天，我终于站到了这里。 </p>
-<p>当然，第一轮流做，明年到你家。谁找到了属于自己的方法而且比别人更加勤奋刻苦，谁就会成为下一个第一名。</p>
-<p>我的第二个理想，叫做信息学奥赛。 </p>
-<p>一开始我的水平并没有领先太多，反而有一个致命的弱点，就是住宿在学校并没有太多的练习时间。怎么办呢？ </p>
-<p>世界很大，我想去看看。 </p>
-<p>于是我就疯狂地提高我的写作业速度，基本上每天都能在6点之前把作业写完。于是晚自习就能抽出大把的时间去看书，写代码，提高自己的水平。 </p>
-<p>过了半年，出乎意料拿到了高中组省一等奖，正衡第一名。 </p>
-<p>但人外有人，常外的赵亮在初二拿了全国金牌，俄罗斯有人初二拿了世界金牌。 </p>
-<p>我不敢懈怠，甚至拿出一些晚自习的时间参加各种比赛，以实战提高自己的水平。两轮省队选拔后，我超越了一中所有高一的学长。 </p>
-<p>能否成为下一个赵亮，谁知道呢。</p>
-<p>我的第三个理想，叫做体育与音乐。 </p>
-<p>我在小学一直是个小胖墩，曾经还因为体育只有及格而失去了一次三好学生。然后我爸妈把我送去学羽毛球，每次都有累死人不偿命的体能训练，到家连吃饭的力气都没有。 </p>
-<p>但是我现在的体育成绩也都是有目共睹，多次在100、1000米中取得优异的名次。 </p>
-<p>关于音乐，在没有接触欧美流行音乐之前，最爱古典音乐，我也因此走上了钢琴的道路。接触了欧美Pop之后么，请自行参见我的歌单。 </p>
-<p>我之所以没有在学习体育音乐全面发展的时候感到劳累，是因为我从来没有把音乐和体育当做自己的负担。它们只是我休闲的方式，家里的钢琴不弹的时候可以当优雅的摆设，高兴时即兴演奏一首自己喜爱的曲子，这不是别人布置的任务，这是我悠闲的生活。 </p>
-<p>我还有一个理想，叫做英国。 </p>
-<p>小升初的暑假BBC第一次在中国举办媒体看片会，全国一共八十个名额。怎么会轮到我这个小学生呢？ </p>
-<p>世界很大，我想去看看。 </p>
-<p>于是我用了三天的时间，写了一万八千字的《神探夏洛克》《神秘博士》等BBC英剧的剧评，又做了一段4分钟的剪辑视频。 </p>
-<p>世上无难事，只要肯攀登。于是我就成功取得了这一次活动的参加名额。 </p>
-<p>一年后，我亲自去了英国。除了英伦的自然风景与人文气息外，有一件事一直留在我的脑海。<br>那就是在过马路时，车辆让我们先行。说起来很简单，但在异国他乡亲自遇到这样的场景时，心中的震撼却是难以言表的。 </p>
-<p>因为我们有差距。</p>
-<p>其实每个人都应该有一个发自内心的信仰，并为之努力。当幻想和现实面对时，总是很痛苦的，要么你被痛苦击倒，要么你把痛苦踩在脚下。 </p>
-<p>如果还有什么要说的，就是永远都不要低估自己的实力。有人正衡初二时年级二三百名，现在<br>是一中创新班的一员；有人二十四中初二时四百名，现在在是一中高二信息学第一名；有人在五中时学习落魄，现在拍摄的微电影入围了戛纳电影节金棕榈奖；有人中专学历，现在全英文答卷考取了芬兰的疗养师，马上就能移民芬兰。 </p>
-<p>没有人生来就是人生赢家，只是因为世界很大，他们想去看看。 </p>
-<p>不去想是否能够成功，既然选择了远方，只顾风雨兼程；不去想身后是否会袭来寒风冷雨，既然目标是地平线，留给世界的只能是背影。</p>
-<p>当然不要忘了一直支持我们的老师同学和亲朋好友。我们一要承受种种外部的压力，更要面对自己内心的困惑。如果有人向你投以理解的目光，你会感到一种生命的暖意。</p>
-<p>世界很大，我想去看看。 </p>
-<p>看世界，都看到了什么啊？ </p>
-<p>我看到了最广大的自然，最雄壮的自己。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;正衡中学八年级期中表彰第一名同学的发言稿 - 孔瑞阳&lt;/p&gt;
-&lt;p&gt;想了想还是把偶像的发言稿搬过来了&lt;br&gt;
     
     </summary>
     
