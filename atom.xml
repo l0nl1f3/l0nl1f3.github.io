@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-02T08:25:38.760Z</updated>
+  <updated>2018-04-02T14:04:44.859Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2018/04/02/%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B2018-Day1/"/>
     <id>http://yoursite.com/2018/04/02/集训队互测2018-Day1/</id>
     <published>2018-04-02T06:30:56.000Z</published>
-    <updated>2018-04-02T08:25:38.760Z</updated>
+    <updated>2018-04-02T14:04:44.859Z</updated>
     
     <content type="html"><![CDATA[<p>良心r爷</p>
 <a id="more"></a>
@@ -29,23 +29,30 @@
 <p>$n\le 64, m\le 20000$</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑计算一天的方案数，等价于矩阵乘法，就是要求 $A^0, A^1\ldots A^m$</p>
 <p>设 $f(k, i)$ 是一天走长度为 $k$, 价值为 $i$ 的方案数，</p>
-<p>则 $f(k, i) = \sum_{x~\mathrm{and}~y = i} A^k[i][j]$</p>
+<p>则 $f(k, i) = \sum_{x~\mathrm{and}~y = i} A^k[x][y]$</p>
 <p>$g(i, j)$ 为若干天进行长度总和为 $i$ 的旅行，价值为 $j$ 的方案数</p>
 <p>则 $g(i, j) = \sum_{k&gt;0} \sum_{x~\mathrm{and}~y = j} g(i - k, x)*f(k, y)$</p>
 <p>暴力做是 $O(n^3m + n^2m^2)$ 的，考虑优化</p>
 <p>首先利用 <strong>特征多项式</strong> 优化求 $f(i, *)$, 在以往的特征多项式使用中，我们需要用对矩阵的 $n^2$ 个位置应用线性变换， $O(n^3)$ 单次还原出一个 $A^i$, 此时我们只关心 $and$ 之后等于每一个值的方案数，可以对于这每一个值进行线性变换，复杂度就是 $O(n^2m)$ 的，特征多项式可以暴力插值+消元求得，复杂度 $O(n^4+n^2m)$</p>
 <p>优化求 $g(<em>, </em>)$, 设 $G(i) = g(i, *)$，可以考虑把 G(i) 当做一个集合交卷积的多项式, 同理定义 $F$</p>
 <p>则 $G(i) = \sum G(i-k)F(k)$, 即 $G=GF+1$, 得 $G=(1-A)^{-1}$, 套用FFT和FWT之后就是 $O(nm \log m+nm \log n)$</p>
-<h1 id="完美的队列"><a href="#完美的队列" class="headerlink" title="完美的队列"></a>完美的队列</h1><h1 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h1><p>维护 $n$ 个有大小上限 $a_i$ 的队列 (超过就弹到这个队列给定的大小上限) </p>
+<h1 id="完美的队列"><a href="#完美的队列" class="headerlink" title="完美的队列"></a>完美的队列</h1><h2 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h2><p>维护 $n$ 个有大小上限 $a_i$ 的队列 (超过就弹到这个队列给定的大小上限) </p>
 <p>支持对区间 [l,r] 的队列执行 push(x), 并求出所有队列的并中不同权值的总数</p>
 <p>$n, x, q\le 10^5$</p>
-<h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><p>离线操作</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>离线操作</p>
 <p>如果我们能对第 $i$ 次操作 $[l, r]$ 求出一个极小的 $j$, 满足在这段时间内 $[l, r]$ 每个位置都备加了超过对应的 $a_{*}$ 次，那么就可以声称 $x_i$ 的出现时间为 $[i, j - 1]$, 这样我们对每个值的出现区间取个并，就可以求出他对哪些询问产生了贡献，差分+前缀和即可</p>
 <p>考虑求这个 $j$, 对序列分块，枚举每一块，每一块可以使用 two pointer + 线段树的方式求每个询问对这一块 $j$，所有块取 $\max $, 即可， 复杂度 $O(\frac{mn}{S}+ n\log S)$, S是块大小, 注意到这里虽然有 $\frac{nm}{S}$ 次线段树操作，只有 $O(m)$ 次不只在根上打标记</p>
 <p>把所有零散的 $2Q$ 个区间和原区间拿出来扫描线，维护另一个关于询问标号的线段树，支持单点+和线段树上的二分 (大概相当于把序列下标当做时间) </p>
 <p>对于原区间就执行对标号的单点加，暴力枚举零散块包含当前位置$i$ 的询问 $x$，找到 $sum(j) \le sum(x) + a_i$ 的最大的 $j$ 即可。 复杂度 $O(nS\log n)$</p>
 <p>取 $S = \sqrt {\frac{n}{\log n}}$, n, m同阶， 得到最优复杂度 $O(n\sqrt {n\log n})$</p>
-<h1 id="完美的集合"><a href="#完美的集合" class="headerlink" title="完美的集合"></a>完美的集合</h1><p>不会 告辞 以后补</p>
+<h1 id="完美的集合"><a href="#完美的集合" class="headerlink" title="完美的集合"></a>完美的集合</h1><h2 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h2><p>给定一个 $n$ 个点的带边权的树，问存在多少种选出 $K$ 个联通块 $S_1, \ldots S_K$的方案 ，满足每个联通块的 $\sum w \le M$ 且 $\sum v$ 最大。同时满足存在一个 $x$, $x\in (S_1\cap S_2 \ldots \cap S_k)$, 且对于有的 $y \in (S_1 \cap S_2 \ldots \cap S_K)$, 满足 $dis(x,y) * v_y\le Max$ 的方案</p>
+<p>对 $5^{23}$ 取模</p>
+<p>$n \le 60, M \le 10000, Max \le 10^{18}$, 其他值在 $10^9$ 以内</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p> 设 $\max {\sum v} = u$, 求 $u$ 只需要枚举根，并在 dfs 序上进行依赖背包即可，$f(i,j)$ 表示 dfs 序后 $i$ 个点，重量为 $j$ 的最大价值，转移的时候考虑是否跳过一个子树，复杂度 $O(n^2m)$</p>
+<p>考虑选择关键点，可以注意到关键点在树上一定是 <strong>一个联通块</strong> </p>
+<p>对每组联通块的选取方案，我们在深度最小的关键点统计他，意味着若有 $a$ 个联通块对  $x$ 合法，且当中有 $b$ 个对 $fa_x$ 也合法，关键点 $x$ 对答案的贡献就是 ${a\choose k} - {a-b\choose k}$</p>
+<p>而对 $x$ 合法的联通块，我们只需要将 $v_y * dis(x,y)\le Max$ 的包含 $x$ 的极大联通块全保留下来做依赖背包就好了</p>
+<p>然后我们只需要会求 ${n \choose k} \bmod 5^{23}$ 就好了 .. 参考 <a href="https://blog.csdn.net/alan_cty/article/details/77435011" target="_blank" rel="external">https://blog.csdn.net/alan_cty/article/details/77435011</a></p>
 ]]></content>
     
     <summary type="html">
