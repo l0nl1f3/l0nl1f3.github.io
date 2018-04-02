@@ -95,16 +95,17 @@
 
 
 
-<meta name="description" content="“愿形容我的词 别太荒唐”">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ChouTi&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
+<meta name="description" content="良心r爷">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集训队互测2018 Day1">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/集训队互测2018-Day1/index.html">
 <meta property="og:site_name" content="ChouTi&#39;s Blog">
-<meta property="og:description" content="“愿形容我的词 别太荒唐”">
+<meta property="og:description" content="良心r爷">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-02T08:13:42.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ChouTi&#39;s Blog">
-<meta name="twitter:description" content="“愿形容我的词 别太荒唐”">
+<meta name="twitter:title" content="集训队互测2018 Day1">
+<meta name="twitter:description" content="良心r爷">
 
 
 
@@ -132,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/02/集训队互测2018-Day1/"/>
 
 
 
 
 
-  <title>归档 | ChouTi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>集训队互测2018 Day1 | ChouTi's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -163,7 +164,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left  page-archive  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,403 +248,165 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 26 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/集训队互测2018-Day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l0nl1f3">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/123.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChouTi's Blog">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">集训队互测2018 Day1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T14:30:56+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <p>良心r爷</p>
+<a id="more"></a>
+<h1 id="完美的旅行"><a href="#完美的旅行" class="headerlink" title="完美的旅行"></a>完美的旅行</h1><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给点一个 $n$ 个点的有向图 $A$, $i \to j$ 有 $A_{i, j}$ 条边，设一次 $x \to y$ 的旅行长度为经过的边数，价值为 $x~ \mathrm{and}~y$</p>
+<p>现在小D进行若干次非空旅行，问长度在 $[1, m]$ 之间，价值在 $[0, n)$ 间的方案数</p>
+<p>$n\le 64, m\le 20000$</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑计算一天的方案数，等价于矩阵乘法，就是要求 $A^0, A^1\ldots A^m$</p>
+<p>设 $f(k, i)$ 是一天走长度为 $k$, 价值为 $i$ 的方案数，</p>
+<p>则 $f(k, i) = \sum_{x~\mathrm{and}~y = i} A^k[i][j]$</p>
+<p>$g(i, j)$ 为若干天进行长度总和为 $i$ 的旅行，价值为 $j$ 的方案数</p>
+<p>则 $g(i, j) = \sum_{k&gt;0} \sum_{x~\mathrm{and}~y = j} g(i - k, x)*f(k, y)$</p>
+<p>暴力做是 $O(n^3m + n^2m^2)$ 的，考虑优化</p>
+<p>首先利用 <strong>特征多项式</strong> 优化求 $f(i, *)$, 在以往的特征多项式使用中，我们需要用 $O(n^3)$ 预处理, 对矩阵的 $n^2$ 个位置应用线性变换， $O(n^3)$ 单次还原出一个 $A^i$, 此时我们只关心 $and$ 之后等于每一个值的方案数，可以对于这每一个值进行线性变换，复杂度就是 $O(n^3+n^2m)$ 的，特征多项式可以暴力插值+消元求得，复杂度 $O(n^3+n^2m)$</p>
+<p>优化求 $g(<em>, </em>)$, 设 $G(i) = g(i, *)$，可以考虑把 G(i) 当做一个集合交卷积的多项式, 同理定义 $F$</p>
+<p>则 $G(i) = \sum G(i-k)F(k)$, 即 $G=GF$, 得 $G=(1-A)^{-1}$, 套用FFT和FWT之后就是 $O(nm \log m+nm \log n)$</p>
+<h1 id="完美的队列"><a href="#完美的队列" class="headerlink" title="完美的队列"></a>完美的队列</h1><h1 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h1><p>维护 $n$ 个有大小上限 $a_i$ 的队列 (超过就弹到这个队列给定的大小上限) </p>
+<p>支持对区间 [l,r] 的队列执行 push(x), 并求出所有队列的并中不同权值的总数</p>
+<p>$n, x, q\le 10^5$</p>
+<h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><p>离线操作</p>
+<p>如果我们能对第 $i$ 次操作 $[l, r]$ 求出一个极小的 $j$, 满足在这段时间内 $[l, r]$ 每个位置都备加了超过对应的 $a_{*}$ 次，那么就可以声称 $x_i$ 的出现时间为 $[i, j - 1]$, 这样我们对每个值的出现区间取个并，就可以求出他对哪些询问产生了贡献，差分+前缀和即可</p>
+<p>考虑求这个 $j$, 对序列分块，枚举每一块，每一块可以使用 two pointer + 线段树的方式求每个询问对这一块 $j$，所有块取 $\max $, 即可， 复杂度 $O(\frac{mn}{S}+ n\log S)$, S是块大小, 注意到这里虽然有 $\frac{nm}{S}$ 次线段树操作，只有 $O(m)$ 次不只在根上打标记</p>
+<p>把所有零散的 $2Q$ 个区间和原区间拿出来扫描线，维护另一个关于询问标号的线段树，支持单点+和线段树上的二分 (大概相当于把序列下标当做时间) </p>
+<p>对于原区间就执行对标号的单点加，暴力枚举零散块包含当前位置$i$ 的询问 $x$，找到 $sum(j) \le sum(x) + a_i$ 的最大的 $j$ 即可。 复杂度 $O(nS\log n)$</p>
+<p>取 $S = \sqrt {\frac{n}{\log n}}$, n, m同阶， 得到最优复杂度 $O(n\sqrt {n\log n})$</p>
+<h1 id="完美的集合"><a href="#完美的集合" class="headerlink" title="完美的集合"></a>完美的集合</h1><p>不会 告辞 以后补</p>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/10/CodeChef-泛做-40-100/" rel="next" title="CodeChef 泛做(40/100)">
+                <i class="fa fa-chevron-left"></i> CodeChef 泛做(40/100)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
         </div>
       
-      
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/08/2017-Multi-University-Training-Contest-5-solutions/" itemprop="url">
-              
-                <span itemprop="name">2017 Multi-University Training Contest 5 solutions</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-08T18:28:03+08:00"
-              content="2017-08-08" >
-          08-08
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/07/CodeChef-August-Long-Challenge-2017-AUG17-Solutions/" itemprop="url">
-              
-                <span itemprop="name">CodeChef August Long Challenge 2017/ AUG17 Solutions</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-07T11:41:07+08:00"
-              content="2017-08-07" >
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/05/一道二合一数学题/" itemprop="url">
-              
-                <span itemprop="name">一道二合一数学题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-05T17:25:24+08:00"
-              content="2017-08-05" >
-          08-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/04/BZOJ-4574-ZJOI-2016-线段树-Solution/" itemprop="url">
-              
-                <span itemprop="name">BZOJ 4574 [ZJOI 2016] 线段树 Solution</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-04T16:11:08+08:00"
-              content="2017-08-04" >
-          08-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/01/2017-Multi-University-Training-Contest-3-solutions/" itemprop="url">
-              
-                <span itemprop="name">2017 Multi-University Training Contest 3 solutions</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-01T17:42:43+08:00"
-              content="2017-08-01" >
-          08-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/31/BZOJ-3019-Balkan-OI-2012-Handsome-Solution/" itemprop="url">
-              
-                <span itemprop="name">BZOJ 3019 [Balkan OI 2012] Handsome Solution</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-31T15:14:24+08:00"
-              content="2017-07-31" >
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/31/BZOJ-3022-Balkan-OI-2012-The-Best-Team-Solution/" itemprop="url">
-              
-                <span itemprop="name">BZOJ 3022 [Balkan OI 2012] The Best Team Solution</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-31T14:29:04+08:00"
-              content="2017-07-31" >
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/30/CodeChef-OCT11-Sine-Partition-Function-Solution/" itemprop="url">
-              
-                <span itemprop="name">CodeChef OCT11 Sine Partition Function Solution</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-30T20:44:05+08:00"
-              content="2017-07-30" >
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/29/iFrog-round-19-Solution/" itemprop="url">
-              
-                <span itemprop="name">iFrog round 19 Solution</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-29T19:07:54+08:00"
-              content="2017-07-29" >
-          07-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/24/Tiao-Laoshi-s-Speech/" itemprop="url">
-              
-                <span itemprop="name">Tiao Laoshi's Speech</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-24T14:11:43+08:00"
-              content="2017-07-24" >
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2017/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -651,6 +414,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTg3OS82NDQ0"></div>
+    
+  </div>
+
 
         </div>
         
@@ -671,8 +440,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/123.png"
@@ -823,6 +601,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#完美的旅行"><span class="nav-number">1.</span> <span class="nav-text">完美的旅行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完美的队列"><span class="nav-number">2.</span> <span class="nav-text">完美的队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题意-1"><span class="nav-number">3.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解-1"><span class="nav-number">4.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完美的集合"><span class="nav-number">5.</span> <span class="nav-text">完美的集合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -935,11 +729,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
@@ -969,6 +761,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
