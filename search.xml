@@ -33,9 +33,9 @@
 <p>$n \le 60, M \le 10000, Max \le 10^{18}$, 其他值在 $10^9$ 以内</p>
 <h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p> 设 $\max {\sum v} = u$, 求 $u$ 只需要枚举根，并在 dfs 序上进行依赖背包即可，$f(i,j)$ 表示 dfs 序后 $i$ 个点，重量为 $j$ 的最大价值，转移的时候考虑是否跳过一个子树，复杂度 $O(n^2m)$</p>
 <p>考虑选择关键点，可以注意到关键点在树上一定是 <strong>一个联通块</strong> </p>
-<p>对每组联通块的选取方案，我们在深度最小的关键点统计他，意味着若有 $a$ 个联通块对  $x$ 合法，且当中有 $b$ 个对 $fa_x$ 也合法，关键点 $x$ 对答案的贡献就是 ${a\choose k} - {a-b\choose k}$</p>
+<p>对每组联通块的选取方案，我们在深度最小的关键点统计他，意味着若有 $a$ 个联通块对  $x$ 合法，且当中有 $b$ 个对 $fa_x$ 也合法，关键点 $x$ 对答案的贡献就是 ${a\choose k} - {b\choose k}$</p>
 <p>而对 $x$ 合法的联通块，我们只需要将 $v_y * dis(x,y)\le Max$ 的包含 $x$ 的极大联通块全保留下来做依赖背包就好了</p>
-<p>然后我们只需要会求 ${n \choose k} \bmod 5^{23}$ 就好了 .. 参考 <a href="https://blog.csdn.net/alan_cty/article/details/77435011" target="_blank" rel="external">https://blog.csdn.net/alan_cty/article/details/77435011</a></p>
+<p>然后我们只需要会求 ${ \choose k} \bmod 5^{23}$ 就好了 .. 参考<a href="https://min-25.hatenablog.com/entry/2017/11/01/185400" target="_blank" rel="external">https://min-25.hatenablog.com/entry/2017/11/01/185400</a></p>
 ]]></content>
       
         
