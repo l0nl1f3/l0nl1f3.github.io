@@ -22,20 +22,25 @@
 <h1 id="完美的队列"><a href="#完美的队列" class="headerlink" title="完美的队列"></a>完美的队列</h1><h2 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h2><p>维护 $n$ 个有大小上限 $a_i$ 的队列 (超过就弹到这个队列给定的大小上限) </p>
 <p>支持对区间 [l,r] 的队列执行 push(x), 并求出所有队列的并中不同权值的总数</p>
 <p>$n, x, q\le 10^5$</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>离线操作</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>离线操作</p>
 <p>如果我们能对第 $i$ 次操作 $[l, r]$ 求出一个极小的 $j$, 满足在这段时间内 $[l, r]$ 每个位置都备加了超过对应的 $a_{*}$ 次，那么就可以声称 $x_i$ 的出现时间为 $[i, j - 1]$, 这样我们对每个值的出现区间取个并，就可以求出他对哪些询问产生了贡献，差分+前缀和即可</p>
-<p>考虑求这个 $j$, 对序列分块，枚举每一块，每一块可以使用 two pointer + 线段树的方式求每个询问对这一块 $j$，所有块取 $\max $, 即可， 复杂度 $O(\frac{mn}{S}+ n\log S)$, S是块大小, 注意到这里虽然有 $\frac{nm}{S}$ 次线段树操作，只有 $O(m)$ 次不只在根上打标记</p>
+<p>考虑求这个 $j$, 对序列分块，枚举每一块，每一块可以使用 two pointer + <del> 线段树</del>的方式求每个询问对这一块 $j$，所有块取 $\max $, 即可， 复杂度 $O(\frac{mn}{S}+ n\log S)$, S是块大小, 注意到这里虽然有 $\frac{nm}{S}$ 次线段树操作，只有 $O(m)$ 次不只在根上打标记</p>
 <p>把所有零散的 $2Q$ 个区间和原区间拿出来扫描线，维护另一个关于询问标号的线段树，支持单点+和线段树上的二分 (大概相当于把序列下标当做时间) </p>
 <p>对于原区间就执行对标号的单点加，暴力枚举零散块包含当前位置$i$ 的询问 $x$，找到 $sum(j) \le sum(x) + a_i$ 的最大的 $j$ 即可。 复杂度 $O(nS\log n)$</p>
 <p>取 $S = \sqrt {\frac{n}{\log n}}$, n, m同阶， 得到最优复杂度 $O(n\sqrt {n\log n})$</p>
-<h1 id="完美的集合"><a href="#完美的集合" class="headerlink" title="完美的集合"></a>完美的集合</h1><h2 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h2><p>给定一个 $n$ 个点的带边权的树，问存在多少种选出 $K$ 个联通块 $S_1, \ldots S_K$的方案 ，满足每个联通块的 $\sum w \le M$ 且 $\sum v$ 最大。同时满足存在一个 $x$, $x\in (S_1\cap S_2 \ldots \cap S_k)$, 且对于有的 $y \in (S_1 \cap S_2 \ldots \cap S_K)$, 满足 $dis(x,y) * v_y\le Max$ 的方案</p>
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>上面的做法是 $O(n\sqrt{n\log n})$ 的，考虑如何去掉一个 $\sqrt {\log n}$</p>
+<p>上一个做法分为两个部分，求整块的和零散的，整块的其实也不用线段树(捂脸) 直接把不完整的暴力for一下就好了</p>
+<p>零散的这个复杂度有点难受，考虑优化</p>
+<p>枚举每块，设 $B_i$ 为前 $i$ 次操作中完全覆盖这块的次数，$A_1, A_2\ldots A_k$ 是不完全覆盖，但是有交的操作，可以two-pointer找出一个包含消失时刻的时间区间 $[A_{j-1},A_j]$，而准确的定位只需要调用一下$B$ 即可</p>
+<p>这个做法的取 $S = \sqrt n$, 复杂度是 $n \sqrt n$ 的，具体实现可以参见LOJ上吉利爷的代码</p>
+<h1 id="完美的集合"><a href="#完美的集合" class="headerlink" title="完美的集合"></a>完美的集合</h1><h2 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h2><p>给定一个 $n$ 个点的带边权的树，问存在多少种选出 $K$ 个联通块 $S_1, \ldots S_K$的方案 ，满足每个联通块的 $\sum w \le M$ 且 $\sum v$ 最大。同时满足存在一个 $x$, $x\in (S_1\cap S_2 \ldots \cap S_k)$, 且对于有的 $y \in (S_1 \cup S_2 \ldots \cup S_K)$, 满足 $dis(x,y) * v_y\le Max$ 的方案</p>
 <p>对 $5^{23}$ 取模</p>
 <p>$n \le 60, M \le 10000, Max \le 10^{18}$, 其他值在 $10^9$ 以内</p>
 <h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p> 设 $\max {\sum v} = u$, 求 $u$ 只需要枚举根，并在 dfs 序上进行依赖背包即可，$f(i,j)$ 表示 dfs 序后 $i$ 个点，重量为 $j$ 的最大价值，转移的时候考虑是否跳过一个子树，复杂度 $O(n^2m)$</p>
 <p>考虑选择关键点，可以注意到关键点在树上一定是 <strong>一个联通块</strong> </p>
 <p>对每组联通块的选取方案，我们在深度最小的关键点统计他，意味着若有 $a$ 个联通块对  $x$ 合法，且当中有 $b$ 个对 $fa_x$ 也合法，关键点 $x$ 对答案的贡献就是 ${a\choose k} - {b\choose k}$</p>
 <p>而对 $x$ 合法的联通块，我们只需要将 $v_y * dis(x,y)\le Max$ 的包含 $x$ 的极大联通块全保留下来做依赖背包就好了</p>
-<p>然后我们只需要会求 ${ \choose k} \bmod 5^{23}$ 就好了 .. 参考<a href="https://min-25.hatenablog.com/entry/2017/11/01/185400" target="_blank" rel="external">https://min-25.hatenablog.com/entry/2017/11/01/185400</a></p>
+<p>然后我们只需要会求 ${… \choose k} \bmod 5^{23}$ 就好了 .. 参考<a href="https://min-25.hatenablog.com/entry/2017/11/01/185400" target="_blank" rel="external">https://min-25.hatenablog.com/entry/2017/11/01/185400</a></p>
 ]]></content>
       
         
