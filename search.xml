@@ -3,6 +3,50 @@
   
     
     <entry>
+      <title><![CDATA[Makoto rng_58 Soejima Contest 4 Solutions]]></title>
+      <url>/2018/04/25/Makoto-rng-58-Soejima-Contest-4-Solutions/</url>
+      <content type="html"><![CDATA[<p>退役选手日常钓鱼</p>
+<a id="more"></a>
+<h1 id="A-2016"><a href="#A-2016" class="headerlink" title="A. 2016"></a>A. 2016</h1><h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>设 $S_x = {y | y &lt; x, \sigma_0(y) &gt; \sigma_0(x)}$<br>求第 $k$ 小的 $|S_x| = 1$ 的 $x$, 若 $x \ge 10 ^ {18}$, 输出 <code>-1</code></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>偷看一下题解会发现 $10^{18}$ 内只有 1k+ 个满足条件的 $x$, 搜出来就好了</p>
+<p>有大质因子的数看起来就不是很优，利用前 18 个质数来组合我们要的答案，需要一些剪枝，一个是若 $x = \prod p_i^{q_i}$, 则 $q_{i + 1} - q_i \le 1$, 另一个是 $\sum [q_{i+1} - q_i = 1] \le 2$，这样得到的数就只有 $4e6$ 左右个，然后线性扫一下就好了</p>
+<h1 id="B-Airports"><a href="#B-Airports" class="headerlink" title="B. Airports"></a>B. Airports</h1><h2 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h2><p>求曼哈顿距离最大生成树上的最小边，$n\le 10^5$</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>根据 kruscal 可以轻而易举的得到，转 $45$ 度之后，向四个边界最远点连边即可</p>
+<h1 id="C-Jump"><a href="#C-Jump" class="headerlink" title="C. Jump"></a>C. Jump</h1><h2 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h2><p>给定 $a_{1\ldots n}$, Q 次询问 $(s, t)$，每次可以从 $x$ 跳到 $2a_{i} - x$, 求 $s$ 到 $t$ 的最小步数</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>展开最后的式子，设跳了 $k$ 步，则 $2(\sum_{i=0}^{k-1} (-1)^{i-1}a_i)-s = (-1)^{k-1}t$<br>$k$ 是奇数时 $\sum_{i=0}^{k-1} (-1)^{i-1}a_i=\frac{s + t}{2}$, 否则 $\sum_{i=0}^{k-1} (-1)^{i-1}a_i = \frac{s - t}{2}$， 不同余必定无解，否则bfs即可</p>
+<h1 id="D-Merge"><a href="#D-Merge" class="headerlink" title="D. Merge"></a>D. Merge</h1><h2 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h2><p>给定两个排列 $p, q$, 每次可以从 $p$ 或 $q$ 的开头弹出一个数塞在 $r$ 的末尾，问最后能产生多少长度为 $2n$ 的 本质不同的 $r$</p>
+<p>$n\le 2000$</p>
+<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>设 $f[i][j]$ 为 $p[1…i]$ 和 $q[1…j]$ 的答案<br>若不要求本质不同，就是 $f[i][j] = f[i - 1][j] + f[i][j - 1]$，如果 $p[:i]$ 和 $q[:j]$ 的某个后缀相等，优先匹配 $p[:i]$ 即可，若长为 $k$, 则减去 $g_k * f[i - k][j - k]$, 考虑 dp $g_k$, 定义即为两个相同的长为 $k$ 的排列拼出的 $r$ 的个数，归纳可得 $g_k = \mathrm{Catalan}(k-1)$</p>
+<p>这样dp的复杂度是 $\sum_{i=1}^{n}\sum_{j=1}^{n} \mathrm{longest_common_suffix}(p[:i], q[:j])$ 这个显然是平方的</p>
+<h1 id="E-Mirror-Rice-Cake"><a href="#E-Mirror-Rice-Cake" class="headerlink" title="E. Mirror Rice Cake"></a>E. Mirror Rice Cake</h1><p>签到题1, 答案不超过 $\log w$, 暴力转移</p>
+<h1 id="F-Number-Cards"><a href="#F-Number-Cards" class="headerlink" title="F. Number Cards"></a>F. Number Cards</h1><p>签到题2</p>
+<h1 id="G-Paint"><a href="#G-Paint" class="headerlink" title="G. Paint"></a>G. Paint</h1><h2 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h2><p>在一个 $1 \times n$ 的画布上，执行 $k$ 次操作，第 $i$ 次将连续的 $a_i$ 个格子染黑，问最后能得到多少种本质不同的画布。 </p>
+<p>$n \le 10^9, k \le 4$</p>
+<h2 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h2><p>把最后的画布分成若干段极大同色区间, 那么一段长为 $l$ 的黑色区间合法的条件为 $\max_{i \in S} a_i \le l \le \sum_{i\in S} a_i$, $S$ 是组成这个区间的操作集合</p>
+<p>设黑区间长为 $y_i$, 白区间是 $x_i$, 然后是白黑交错的，得到限制 $\forall i &gt; 1, x_i &gt; 0$, 枚举操作对极长短的映射可以得到一堆 $y_i \in [L_i, R_i]$ </p>
+<p>减去下界应用容斥原理进行计数，这样复杂度就是 $n^K <em> K^{K}$ 的显然不可以通过，观察限制会发现很多不同的方程有一样的解的，把 $a_{1\ldots n}$ 和所有的 $1 + \sum_{i \in S} a_i$ 把 $1\ldots n$ 划分成 $2^K + K + 1$ 个等价类，然后就是 $(2^K + K + 1)^K </em> K ^ K$ 的吧 。。</p>
+<h1 id="H-Random-Walk"><a href="#H-Random-Walk" class="headerlink" title="H. Random Walk"></a>H. Random Walk</h1><h2 id="题意-5"><a href="#题意-5" class="headerlink" title="题意"></a>题意</h2><p>在无穷大的平面里每次等概率向上下左右走一个单位长度，问 $n$ 步经过点数的期望，经过多次不重复计算</p>
+<p>$n\le 5000$</p>
+<h2 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h2><p>多次重复计算就是 $(n+1)4^n$, 重复经过的点一定是走出了环，从中扣掉不经过重复点的简单环个数即可</p>
+<p>不经过重复点的简单环个数可以通过经过重复点的来容斥</p>
+<h1 id="I-Robots"><a href="#I-Robots" class="headerlink" title="I. Robots"></a>I. Robots</h1><h2 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h2><p>平面上有 $n$ 个机器人，每个机器人启动了会一个方向以单位速度移动，一开始只有标号为 $1$ 的机器人启动了，每次一个启动的机器人碰到另一个会将被碰到的机器人启动并穿过他，问 $T$ 时刻后每个机器人的坐标</p>
+<p>$n\le 10^5, T \le 10^{18}$</p>
+<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p>dijkstra模拟，还没过不知道为什么</p>
+<h1 id="J-Ropes"><a href="#J-Ropes" class="headerlink" title="J. Ropes"></a>J. Ropes</h1><p>裸 prufer</p>
+<h1 id="K-Stain"><a href="#K-Stain" class="headerlink" title="K. Stain"></a>K. Stain</h1><p>不会</p>
+<h1 id="L-String-Modification"><a href="#L-String-Modification" class="headerlink" title="L. String Modification"></a>L. String Modification</h1><h2 id="题意-7"><a href="#题意-7" class="headerlink" title="题意"></a>题意</h2><p>给定 $s$ 串和 $t$ 串，每次可以在任意 $s_i$ 后插入一个字符 $c$, 需满足 $c \ne s_i$, 问 $s$ 是否能变成 $t$</p>
+<h2 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h2><p>$t$ 不是 $s$ 的子序列无解</p>
+<p>$s_1 \ne t_1$ 无解</p>
+<p>找到 $s$ 中第一个与 $s_1$ 不等的位置 $i$, $t$ 中类似找到 $j$, 若 $i \ge j$ 有解，否则无解</p>
+<h1 id="M-Team-Competition"><a href="#M-Team-Competition" class="headerlink" title="M. Team Competition"></a>M. Team Competition</h1><h2 id="题意-8"><a href="#题意-8" class="headerlink" title="题意"></a>题意</h2><p>$n$ 个人， 构造一个长为 $t, t\in [1, n^2]$ 的训练计划，每个元素以 $(a, b, c)$ 描述，即 $(a, b, c)$ 三人在同一天训练，设 $f(p, q) =$ p 和 q 同天训练的次数，要求满足所有 $f(p, q)$ 均相等</p>
+<h2 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h2><p>若 $n$ 为奇数, 在下标模 $n$ 意义下处理，$t = \frac{n * (n - 1)}{2}$, 把 $(i - j, i, i + j)$ 作为训练计划，这样对于每一对 $(i, j)$, 他会形如 $(i, b, j), (i, j, c), (a, i, j)$ 的出现三次</p>
+<p>如果是 $n$ 是偶数，则每次分配 $i$ 的时候都会漏掉 $i + 1 + \frac{n}{2}$, 考虑弥补这个，就是把 $(i, i+1, n)$ 算两次 $(i, i + 2, n)$ 算一次，然后在把上面那个情况里 $i &lt; n, j \in [2, n / 2 - 1]$ 的填进去就好了，这样 $f(p, q) = 6$</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[集训队互测2018 Day1]]></title>
       <url>/2018/04/02/%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BA%92%E6%B5%8B2018-Day1/</url>
       <content type="html"><![CDATA[<p>良心r爷</p>
