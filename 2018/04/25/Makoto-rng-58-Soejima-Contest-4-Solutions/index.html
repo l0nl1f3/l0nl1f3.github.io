@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ChouTi&#39;s Blog">
 <meta property="og:description" content="退役选手日常钓鱼">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T04:48:06.220Z">
+<meta property="og:updated_time" content="2018-04-27T06:41:39.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Makoto rng_58 Soejima Contest 4 Solutions">
 <meta name="twitter:description" content="退役选手日常钓鱼">
@@ -334,7 +334,7 @@
 <h1 id="D-Merge"><a href="#D-Merge" class="headerlink" title="D. Merge"></a>D. Merge</h1><h2 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h2><p>给定两个排列 $p, q$, 每次可以从 $p$ 或 $q$ 的开头弹出一个数塞在 $r$ 的末尾，问最后能产生多少长度为 $2n$ 的 本质不同的 $r$</p>
 <p>$n\le 2000$</p>
 <h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>设 $f[i][j]$ 为 $p[1…i]$ 和 $q[1…j]$ 的答案<br>若不要求本质不同，就是 $f[i][j] = f[i - 1][j] + f[i][j - 1]$，如果 $p[:i]$ 和 $q[:j]$ 的某个后缀相等，优先匹配 $p[:i]$ 即可，若长为 $k$, 则减去 $g_k * f[i - k][j - k]$, 考虑 dp $g_k$, 定义即为两个相同的长为 $k$ 的排列拼出的 $r$ 的个数，归纳可得 $g_k = \mathrm{Catalan}(k-1)$</p>
-<p>这样dp的复杂度是 $\sum_{i=1}^{n}\sum_{j=1}^{n} \mathrm{longest_common_suffix}(p[:i], q[:j])$ 这个显然是平方的</p>
+<p>这样dp的复杂度是 $\sum_{i=1}^{n}\sum_{j=1}^{n} \mathrm{lcsuffix}(p[:i], q[:j])$ 这个显然是平方的</p>
 <h1 id="E-Mirror-Rice-Cake"><a href="#E-Mirror-Rice-Cake" class="headerlink" title="E. Mirror Rice Cake"></a>E. Mirror Rice Cake</h1><p>签到题1, 答案不超过 $\log w$, 暴力转移</p>
 <h1 id="F-Number-Cards"><a href="#F-Number-Cards" class="headerlink" title="F. Number Cards"></a>F. Number Cards</h1><p>签到题2</p>
 <h1 id="G-Paint"><a href="#G-Paint" class="headerlink" title="G. Paint"></a>G. Paint</h1><h2 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h2><p>在一个 $1 \times n$ 的画布上，执行 $k$ 次操作，第 $i$ 次将连续的 $a_i$ 个格子染黑，问最后能得到多少种本质不同的画布。 </p>
@@ -348,7 +348,7 @@
 <p>不经过重复点的简单环个数可以通过经过重复点的来容斥</p>
 <h1 id="I-Robots"><a href="#I-Robots" class="headerlink" title="I. Robots"></a>I. Robots</h1><h2 id="题意-6"><a href="#题意-6" class="headerlink" title="题意"></a>题意</h2><p>平面上有 $n$ 个机器人，每个机器人启动了会一个方向以单位速度移动，一开始只有标号为 $1$ 的机器人启动了，每次一个启动的机器人碰到另一个会将被碰到的机器人启动并穿过他，问 $T$ 时刻后每个机器人的坐标</p>
 <p>$n\le 10^5, T \le 10^{18}$</p>
-<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p>dijkstra模拟，还没过不知道为什么</p>
+<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p>最短路</p>
 <h1 id="J-Ropes"><a href="#J-Ropes" class="headerlink" title="J. Ropes"></a>J. Ropes</h1><p>裸 prufer</p>
 <h1 id="K-Stain"><a href="#K-Stain" class="headerlink" title="K. Stain"></a>K. Stain</h1><p>不会</p>
 <h1 id="L-String-Modification"><a href="#L-String-Modification" class="headerlink" title="L. String Modification"></a>L. String Modification</h1><h2 id="题意-7"><a href="#题意-7" class="headerlink" title="题意"></a>题意</h2><p>给定 $s$ 串和 $t$ 串，每次可以在任意 $s_i$ 后插入一个字符 $c$, 需满足 $c \ne s_i$, 问 $s$ 是否能变成 $t$</p>
